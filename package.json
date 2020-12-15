@@ -1,5 +1,5 @@
 {
-    "name": "react-redux-material-ui-boilerplate",
+    "name": "pokedex-jacoblynch",
     "version": "0.1.0",
     "proxy": "http://localhost:9000",
     "private": true,

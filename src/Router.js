@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
 import cookie from 'cookie'
-import UserLanding from './components/UserLanding'
+import UserLanding from './containers/UserLanding'
 
 const Router = () => {
     const checkAuth = () => {
