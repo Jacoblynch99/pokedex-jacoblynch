@@ -17,6 +17,7 @@ import {
 import PokemonSingle from './PokemonSingle'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import background from '../Backdrops/pokedexBackground.jpg'
 
 const UserLanding = (props) => {
     const [pokemonDetails, setPokemonDetails] = useState({
@@ -30,7 +31,19 @@ const UserLanding = (props) => {
     }
 
     return (
-        <Box>
+        <Box
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignContent: 'flex-start',
+                width: '100vw',
+                backgroundImage: `url(${background})`,
+                backgroundAttachment: 'fixed',
+                backgroundPosition: 'center',
+            }}
+        >
             {props.pokemon.map((item) => {
                 return (
                     <PokemonSingle

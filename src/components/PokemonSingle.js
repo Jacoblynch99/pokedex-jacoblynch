@@ -7,12 +7,26 @@ import {
 } from '@material-ui/core'
 import axios from 'axios'
 import React, { useState } from 'react'
+import backdrop from '../Backdrops/GrassBackdrop.jpg'
 
 const PokemonSingle = (props) => {
+    let index = `${props.url.split('/')[6]}`
+
+    if (index.length === 1) {
+        index = `#00${index}`
+    } else if (index.length === 2) {
+        index = `#0${index}`
+    } else if (index.length === 3) {
+        index = `#${index}`
+    }
+
+    console.log(index)
+
     const [stats, setStats] = useState({
         name: '',
         images: '',
         types: [],
+        gameIndex: index,
     })
 
     const fetchStats = () => {
@@ -33,6 +47,7 @@ const PokemonSingle = (props) => {
                     name: fixedName,
                     images: res.data.sprites,
                     types: res.data.types,
+                    gameIndex: index,
                 }))
             })
             .catch((err) => {
@@ -40,9 +55,11 @@ const PokemonSingle = (props) => {
             })
     }
 
-    const consol = () => {
-        console.log(stats)
-    }
+    // const consol = () => {
+    //     console.log(stats)
+    // }
+
+    console.log(props.url)
 
     React.useEffect(() => fetchStats(), [])
 
@@ -51,18 +68,26 @@ const PokemonSingle = (props) => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
+                alignSelf: 'flex-start',
                 marginTop: 10,
                 marginLeft: 20,
                 width: 150,
             }}
         >
+            <Typography
+                style={{ color: 'gray', marginTop: 5, marginLeft: 5 }}
+            >{`${stats.gameIndex}`}</Typography>
             <img
                 element="img"
                 src={stats.images.front_default}
                 alt={stats.name}
                 style={{
                     alignSelf: 'center',
-                    backgroundColor: 'red',
+                    backgroundImage: `url(${backdrop})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: '300px 100px',
+                    border: '0px solid black',
+                    borderRadius: '50%',
                 }}
             />
             <Typography style={{ alignSelf: 'center' }}>
@@ -78,12 +103,6 @@ const PokemonSingle = (props) => {
                 {stats.types.map((item, id) => {
                     let backgroundColor = ''
                     let textColor = ''
-
-                    // if (item.type.name === 'fire') {
-                    //     backgroundColor = 'rgb(253,125,36)'
-                    // } else if (item.type.name === 'flying') {
-                    //     backgroundColor = 'blue'
-                    // }
 
                     switch (item.type.name) {
                         case 'fire':
@@ -169,7 +188,9 @@ const PokemonSingle = (props) => {
                         <Typography
                             style={{
                                 fontSize: 12,
-                                margin: 10,
+                                marginLeft: 2,
+                                marginRight: 2,
+                                marginBottom: 5,
                                 border: '0px solid black',
                                 borderRadius: '2px',
                                 width: '4rem',
@@ -187,7 +208,7 @@ const PokemonSingle = (props) => {
                 })}
             </div>
 
-            <Button onClick={consol}> Click</Button>
+            {/* <Button onClick={consol}> Click</Button> */}
         </Card>
     )
 }
