@@ -14,6 +14,7 @@ import {
     DialogActions,
     Container,
 } from '@material-ui/core'
+import PokemonSingle from './PokemonSingle'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -46,9 +47,14 @@ const UserLanding = (props) => {
 
     return (
         <Box>
-            <button onClick={consol}>HERE</button>
             {props.pokemon.map((item) => {
-                return <h1 key={item.name}>{item.name}</h1>
+                return (
+                    <PokemonSingle
+                        key={item.name}
+                        name={item.name}
+                        url={item.url}
+                    />
+                )
             })}
         </Box>
     )
