@@ -15,7 +15,7 @@ import {
     Container,
     TextField,
 } from '@material-ui/core'
-import PokemonSingle from './PokemonSingle'
+import PokemonSingle from '../containers/PokemonSingle'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import background from '../Backdrops/pokedexBackground.jpg'
@@ -27,12 +27,11 @@ const UserLanding = (props) => {
     React.useEffect(() => props.getPokemon(), [])
 
     const handleChange = (event) => {
-        setSearch({ search: event.target.value })
-        console.log(search)
+        setSearch(event.target.value)
     }
 
     const consol = () => {
-        console.log(props.pokemon)
+        console.log(props.pokemonDetails)
     }
 
     return (
@@ -44,6 +43,7 @@ const UserLanding = (props) => {
                     variant="outlined"
                     onChange={handleChange}
                 />
+                <Button onClick={consol}>TEST ME</Button>
             </AppBar>
             <Box
                 style={{

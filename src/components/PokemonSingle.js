@@ -40,7 +40,7 @@ const PokemonSingle = (props) => {
                         fixedName = fixedName.split('-')[0]
                     }
                 }
-
+                props.updatePokemon(res.data)
                 setStats((prevState) => ({
                     name: fixedName,
                     images: res.data.sprites,

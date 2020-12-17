@@ -5,6 +5,7 @@ import { getPokemon } from '../redux/action'
 const mapStateToProps = (state) => {
     return {
         pokemon: state.pokemon,
+        pokemonDetails: state.pokemonDetails,
     }
 }
 

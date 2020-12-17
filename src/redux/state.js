@@ -1,3 +1,4 @@
 export default {
     pokemon: [],
+    pokemonDetails: [],
 }

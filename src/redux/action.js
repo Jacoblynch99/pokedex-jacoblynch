@@ -16,3 +16,10 @@ export const getPokemon = () => {
             })
     }
 }
+
+export const updatePokemon = (pokemon) => {
+    return {
+        type: 'UPDATE_POKEMON',
+        value: pokemon,
+    }
+}

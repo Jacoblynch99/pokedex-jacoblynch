@@ -9,4 +9,14 @@ const pokemon = (state = [], action) => {
     }
 }
 
-export default combineReducers({ pokemon })
+const pokemonDetails = (state = [], action) => {
+    switch (action.type) {
+        case 'UPDATE_POKEMON':
+            return (state = [...state, action.value])
+
+        default:
+            return state
+    }
+}
+
+export default combineReducers({ pokemon, pokemonDetails })
