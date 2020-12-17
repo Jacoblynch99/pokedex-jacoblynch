@@ -20,8 +20,6 @@ const PokemonSingle = (props) => {
         index = `#${index}`
     }
 
-    console.log(index)
-
     const [stats, setStats] = useState({
         name: '',
         images: '',
@@ -58,8 +56,6 @@ const PokemonSingle = (props) => {
     // const consol = () => {
     //     console.log(stats)
     // }
-
-    console.log(props.url)
 
     React.useEffect(() => fetchStats(), [])
 
